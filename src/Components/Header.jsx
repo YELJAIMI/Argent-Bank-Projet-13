@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../Features/sliceLogin";
 import { editName } from "../Features/sliceUser";
 
-export default function Header() {
+function Header() {
 	const { isAuth } = useSelector((state) => state.login);
 	const { user } = useSelector((state) => state.user);
 	const dispatch = useDispatch();
@@ -43,3 +43,5 @@ export default function Header() {
 		</nav>
 	);
 }
+
+export default Header

@@ -6,7 +6,7 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import getUserProfile from "../userAct";
 
-export default function User() {
+function User() {
 	const { user, error } = useSelector((state) => state.user);
 	const { isEditName } = useSelector((state) => state.user);
 	const dispatch = useDispatch();
@@ -15,7 +15,7 @@ export default function User() {
 
 	useEffect(() => {
 		getUserProfile(dispatch);
-	}, []);
+	}, [dispatch]);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -56,7 +56,7 @@ export default function User() {
 				{isEditName ? (
 					<div className="header">
 						<form onSubmit={handleSubmit}>
-							<h1>Welcome back</h1>
+							<h1>Content de vous revoir</h1>
 							<input
 								className="edit-input name"
 								autoComplete="off"
@@ -73,7 +73,7 @@ export default function User() {
 							/>
 							<br /> <br />
 							<button type="submit" className="save-button">
-								Save
+								Sauvegarder
 							</button>
 							<button
 								onClick={() => {
@@ -81,14 +81,14 @@ export default function User() {
 								}}
 								className="cancel-button"
 							>
-								Cancel
+								Fermer
 							</button>
 						</form>
 					</div>
 				) : (
 					<div className="header">
 						<h1>
-							Welcome back
+							Content de vous revoir 
 							<div className="name">
 								{user.firstName} {user.lastName}
 							</div>
@@ -104,35 +104,35 @@ export default function User() {
 					</div>
 				)}
 
-				<h2 className="sr-only">Accounts</h2>
+				<h2 className="sr-only">Comptes</h2>
 				<section className="account">
 					<div className="account-content-wrapper">
-						<h3 className="account-title">Argent Bank Checking (x8349)</h3>
+						<h3 className="account-title">Vérification de la banque d'argent (x8349)</h3>
 						<p className="account-amount">$2,082.79</p>
-						<p className="account-amount-description">Available Balance</p>
+						<p className="account-amount-description">Solde disponible</p>
 					</div>
 					<div className="account-content-wrapper cta">
-						<button className="transaction-button">View transactions</button>
+						<button className="transaction-button">Afficher les transactions</button>
 					</div>
 				</section>
 				<section className="account">
 					<div className="account-content-wrapper">
-						<h3 className="account-title">Argent Bank Savings (x6712)</h3>
+						<h3 className="account-title">Argent d'Epargne (x6712)</h3>
 						<p className="account-amount">$10,928.42</p>
-						<p className="account-amount-description">Available Balance</p>
+						<p className="account-amount-description">Solde disponible</p>
 					</div>
 					<div className="account-content-wrapper cta">
-						<button className="transaction-button">View transactions</button>
+						<button className="transaction-button">Afficher les transactions</button>
 					</div>
 				</section>
 				<section className="account">
 					<div className="account-content-wrapper">
-						<h3 className="account-title">Argent Bank Credit Card (x8349)</h3>
+						<h3 className="account-title">Carte de crédit Banque Argent (x8349)</h3>
 						<p className="account-amount">$184.30</p>
-						<p className="account-amount-description">Current Balance</p>
+						<p className="account-amount-description">Solde Actuel</p>
 					</div>
 					<div className="account-content-wrapper cta">
-						<button className="transaction-button">View transactions</button>
+						<button className="transaction-button">Afficher les opérations</button>
 					</div>
 				</section>
 			</main>
@@ -140,3 +140,5 @@ export default function User() {
 		</>
 	);
 }
+
+export default User
